@@ -1,0 +1,42 @@
+$bg-primary: #222;
+$bg-secondary: #333;
+$fg-primary: #fff;
+$fg-secondary: #ccc;
+
+$alpha: 0.75;
+
+Panel {
+  background: transparent;
+  color: $fg-primary;
+
+  >container {
+    >centerbox,
+    .Subpanel,
+    {
+      border-right: 1px solid $fg-secondary;
+      min-width: 25rem;
+    }
+
+    >centerbox {
+      background-color: rgba($bg-primary, $alpha);
+    }
+
+    .Subpanel {
+      background-color: rgba($bg-primary, calc($alpha * 0.75));
+    }
+  }
+}
+
+button {
+  background-color: rgba($bg-secondary, 0.5);
+  border-bottom: 1px solid $fg-secondary;
+
+  &:hover,
+  &:active {
+    margin-right: 0px;
+  }
+
+  border-radius: 0;
+  margin: 0.2rem 0.5rem;
+}
+
