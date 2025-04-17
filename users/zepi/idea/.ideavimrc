@@ -1,0 +1,127 @@
+let mapleader=" "
+
+" ---------------------------------------------------------------------
+" Keymaps
+" ---------------------------------------------------------------------
+
+" Exit insert mode with jj
+imap jj <Esc>
+imap JJ <Esc>
+imap jJ <Esc>
+imap Jj <Esc>
+
+" Disable arrow keys in normal mode
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+
+" smarter way to move in splits
+let g:WhichKeyDesc_Window = '<C-w> [w]indow'
+let g:WhichKeyDesc_window = '<C-w>v [w]indow [v]ertical'
+noremap <C-k> <C-W>k
+noremap <C-j> <C-W>j
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+
+
+let g:WhichKeyDesc_leader= '<leader> leader'
+
+let g:WhichKeyDesc_find = '<C-i> [i]nsert completion'
+imap<C-i> :action AcceptDisplayedCompletion<CR>
+map <C-i> :action AcceptDisplayedCompletion<CR>
+
+let g:WhichKeyDesc_code_fix = '<leader>q [q]uick fix'
+noremap <leader>q :action ShowIntentionActions<CR>
+
+
+" - Search and Replace
+noremap / :action Replace<CR>
+noremap <leader>/ :action FindInPath<CR>
+
+
+" - Find
+let g:WhichKeyDesc_find = '<leader>f [f]ind'
+noremap <leader>ff :action GotoFile<CR>
+let g:WhichKeyDesc_file = '<leader>ff [f]ind [f]ile'
+noremap <leader>fc :action GotoClass<CR>
+let g:WhichKeyDesc_class = '<leader>fc [f]ind [c]lass'
+noremap <leader>fs :action GotoSymbol<CR>
+let g:WhichKeyDesc_symbol = '<leader>fs [f]ind [s]ymbol'
+noremap <leader>fa :action GotoAction<CR>
+let g:WhichKeyDesc_action = '<leader>fa [f]ind [a]ction'
+noremap <leader>fv :e ~/.ideavimrc<CR>
+let g:WhichKeyDesc_vimrc = '<leader>fv [f]ind [v]imrc'
+noremap <leader><leader> :action RecentFiles<CR>
+let g:WhichKeyDesc_recent = '<leader><leader> recent'
+
+" - Code
+let g:WhichKeyDesc_code = '<leader>c [c]ode'
+" -- Actions
+let g:WhichKeyDesc_code_actions = '<leader>ca [c]ode [a]ctions'
+noremap <leader>car :action Run<CR>
+let g:WhichKeyDesc_code_actions_run = '<leader>car [c]ode [a]ctions [r]un'
+noremap <leader>cad :action Debug<CR>
+let g:WhichKeyDesc_code_actions_debug = '<leader>cad [c]ode [a]ctions [d]ebug'
+noremap <leader>cas :action Stop<CR>
+let g:WhichKeyDesc_code_actions_stop = '<leader>cas [c]ode [a]ctions [s]top'
+
+" - Refactor
+let g:WhichKeyDesc_refactor = '<leader>r [r]efactor'
+nnoremap <leader>rn :action RenameElement<CR>
+let g:WhichKeyDesc_rename = '<leader>rn [n]ame'
+noremap <leader>rs :action ChangeSignature<CR>
+let g:WhichKeyDesc_change_signature = '<leader>rs [s]ignature'
+
+" - Git
+let g:WhichKeyDesc_git = '<leader>g [g]it'
+nnoremap <leader>gf :action Git.Fetch<CR>
+let g:WhichKeyDesc_fetch = '<leader>gf [f]etch'
+nnoremap <leader>gu :action Vcs.UpdateProject<CR>
+let g:WhichKeyDesc_update = '<leader>gu [u]pdate'
+nnoremap <leader>gc :action ActivateCommitToolWindow<CR>
+let g:WhichKeyDesc_commit = '<leader>gc [c]ommit'
+nnoremap <leader>gp :action Vcs.Push<CR>
+let g:WhichKeyDesc_push = '<leader>gp [p]ush'
+
+" - Documentation
+nnoremap <C-k> :action QuickJavaDoc<CR>
+
+" - ToolWindows
+let g:WhichKeyDesc_toolwindow = '<leader>w [w]indow'
+let g:WhichKeyDesc_project = '<leader>we [w]indow [e]xplorer'
+noremap <leader>we :action ActivateProjectToolWindow<CR>
+let g:WhichKeyDesc_run = '<leader>wr [w]indow [r]un'
+noremap <leader>wr :action ActivateRunToolWindow<CR>
+let g:WhichKeyDesc_problems = '<leader>wp [w]indow [p]roblems'
+noremap <leader>wp :action ActivateProblemsViewToolWindow<CR>
+
+
+
+" ---------------------------------------------------------------------
+" Options
+" ---------------------------------------------------------------------
+set clipboard+=unnamed
+set scrolloff=10
+set sidescrolloff=5
+
+" ---------------------------------------------------------------------
+" Plugins
+" ---------------------------------------------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set highlightedyank
+set which-key
+
+" disable timeout
+set notimeout
+
+" show vim actions
+let g:WhichKey_ShowVimActions = "true"
+let g:WhichKey_ShowTypedSequences = "false"

@@ -1,0 +1,6 @@
+{
+    "name": "astal-shell",
+    "dependencies": {
+        "astal": "/home/zepi/.local/share/ags"
+    }
+}
