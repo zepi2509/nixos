@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
   {
   imports = [
     ./stylix.nix
@@ -52,6 +52,8 @@
       typst
       tinymist
       zig
+      cargo
+      gcc
       go
       nodejs_23
       mermaid-cli
