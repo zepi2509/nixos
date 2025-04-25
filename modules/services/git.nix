@@ -15,6 +15,9 @@
         credentialStore = "secretservice";
         helper = "manager";
       };
+      fetch = {
+        prune = true;
+      };
     };
   };
 }
