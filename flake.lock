@@ -31,18 +31,6 @@
         "url": "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage"
       }
     },
-    "appimage-file-latest_2": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-2WMn7iUfJjWNFf7l8vOTfHPPtq/Rd1B9WzMn44GuOqU=",
-        "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/latest/download/zen-x86_64.AppImage"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/latest/download/zen-x86_64.AppImage"
-      }
-    },
     "appimage-file-nightly": {
       "flake": false,
       "locked": {
@@ -53,18 +41,6 @@
       "original": {
         "type": "file",
         "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage"
-      }
-    },
-    "appimage-file-twilight": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-jFSaRfBAK2AG/u2c09oEW5NnKq8bnP4O2W9NKfYgxy8=",
-        "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen-x86_64.AppImage"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/twilight/zen-x86_64.AppImage"
       }
     },
     "aquamarine": {
@@ -781,22 +757,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
-      "locked": {
-        "lastModified": 1744463964,
-        "narHash": "sha256-LWqduOgLHCFxiTNYi3Uj5Lgz0SR+Xhw3kr/3Xd0GPTM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "2631b0b7abcea6e640ce31cd78ea58910d31e650",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -1066,20 +1026,20 @@
     },
     "zen-browser": {
       "inputs": {
-        "appimage-file-latest": "appimage-file-latest_2",
-        "appimage-file-twilight": "appimage-file-twilight",
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1744633032,
-        "narHash": "sha256-CuV7CL2lWUnGRyb22SBfrWjfed3tk+lZgwpm/EC+4lg=",
-        "owner": "zepi2509",
+        "lastModified": 1745121923,
+        "narHash": "sha256-8X9JuDfxAEQlBhB0ARgFj9fbDOlCvPx6AbQ1h2T47/g=",
+        "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "578ff7485c343175b14860c4b03f6e2c83d2501d",
+        "rev": "02084a38e9dbc4fa17f3474c3e9d43bb7db55799",
         "type": "github"
       },
       "original": {
-        "owner": "zepi2509",
+        "owner": "youwen5",
         "repo": "zen-browser-flake",
         "type": "github"
       }
