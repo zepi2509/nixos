@@ -8,7 +8,10 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     ags.url = "github:aylur/ags";
-    zen-browser.url = "github:zepi2509/zen-browser-flake";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim.url = "github:zepi2509/nvim-flake";
     stylix.url = "github:danth/stylix";
   };

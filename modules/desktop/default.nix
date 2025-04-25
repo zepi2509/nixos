@@ -11,7 +11,7 @@
 
   environment.systemPackages = with pkgs; [
     ghostty
-    inputs.zen-browser.packages."${system}".twilight
+    inputs.zen-browser.packages."${system}".default
     chromium
     rofi-wayland
     dunst
