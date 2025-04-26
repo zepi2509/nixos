@@ -1,0 +1,57 @@
+##-----------------------------------------------------------------------------
+## Line editor settings
+
+bleopt prompt_ps1_final=
+bleopt prompt_ps1_transient=
+
+bleopt prompt_rps1='\w'
+bleopt prompt_rps1_final=
+bleopt prompt_rps1_transient=
+
+bleopt prompt_status_line=
+
+bleopt prompt_ruler=empty-line
+
+
+##-----------------------------------------------------------------------------
+## Color options
+
+bleopt highlight_syntax=1
+bleopt highlight_filename=1
+bleopt highlight_variable=1
+
+
+##-----------------------------------------------------------------------------
+## Keybindings
+
+
+##-----------------------------------------------------------------------------
+## Settings for Vim mode
+#
+function blerc/vim-load-hook {
+  #----------------------------------------------------------------------------
+  # Settings for the mode indicator
+
+  bleopt keymap_vi_mode_show=
+
+
+  #----------------------------------------------------------------------------
+  # Cursor shapes and other terminal settings
+  # 1 : blinking-block
+  # 2 : block
+  # 3 : blinking-underline
+  # 4 : underline
+  # 5 : blinking-bar
+  # 6 : bar
+
+  ble-bind -m vi_cmap --cursor 0 # command-line mode
+  ble-bind -m vi_imap --cursor 3 # insert mode
+  ble-bind -m vi_nmap --cursor 2 # normal mode
+  ble-bind -m vi_omap --cursor 4 # operator-pending mode
+  ble-bind -m vi_smap --cursor 2 # select mode
+  ble-bind -m vi_xmap --cursor 2 # visual mode
+}
+
+blehook/eval-after-load keymap_vi blerc/vim-load-hook
+
+

@@ -3,28 +3,18 @@
 {
   environment = {
     systemPackages = with pkgs; [
+      starship
+      blesh
       zoxide
     ];
-    
+
     etc.inputrc.source = ./inputrc;
-
-    shellInit = ''
-      eval "$(zoxide init --cmd cd bash)"
-    '';
-  };
-
-  programs.bash = {
-    blesh.enable = true;
-     
-  };
-
-  programs.fzf = {
-    fuzzyCompletion = true;
-    keybindings = true;
+    etc."starship.toml".source = ./starship.toml;
+    etc.blerc.source = ./blerc;
   };
 
   programs.starship = {
-    enable = true;
+    enable = false;
     settings = {
       add_newline = false;
       character = {
@@ -34,5 +24,25 @@
         vicmd_symbol = "[#](white)";
       };
     };
+  };
+
+  programs.bash = {
+    interactiveShellInit = ''
+      export STARSHIP_CONFIG=/etc/starship.toml
+      eval "$(starship init bash)"
+
+      [[ $- == *i* ]] &&
+        source "${pkgs.blesh}/share/blesh/ble.sh" --rcfile "/etc/blerc"
+
+      [[ ! $\{BLE_VERSION-} ]] || ble-attach
+
+      export _ZO_DOCTOR=0
+      eval "$(zoxide init --cmd cd bash)"
+    '';
+  };
+
+  programs.fzf = {
+    fuzzyCompletion = true;
+    keybindings = true;
   };
 }
