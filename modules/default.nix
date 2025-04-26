@@ -36,11 +36,8 @@
 
   # Global packages
   environment.systemPackages = with pkgs; [
-    nushell
     wl-clipboard
     inputs.neovim.packages."${system}".nightly
     htop
   ];
-
-  environment.shells = with pkgs; [ nushell ];
 }
