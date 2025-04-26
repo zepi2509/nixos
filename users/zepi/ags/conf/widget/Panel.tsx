@@ -1,7 +1,8 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk4"
-import { GLib, Variable, bind } from "astal"
-import Battery from "gi://AstalBattery"
-import Wp from "gi://AstalWp"
+import { App, Astal, Gtk, Gdk } from "astal/gtk4";
+import { GLib, Variable, bind } from "astal";
+import Battery from "gi://AstalBattery";
+import AstalWp from "gi://AstalWp?version=0.1";
+
 
 
 
@@ -78,18 +79,40 @@ function Panel({ gdkmonitor, format = "%H:%M" }: { gdkmonitor: Gdk.Monitor; form
 }
 
 function AudioPanel(): Gtk.Widget {
-  const audio = Wp.get_default()
+  const audio = AstalWp.get_default()!.audio;
 
   return (
-    <centerbox
+    <box
       cssName="AudioPanel"
       cssClasses={["Subpanel"]}>
-      <centerbox
+      <box
         orientation={Gtk.Orientation.VERTICAL}
         vexpand>
         <label label="Sound" />
-      </centerbox>
-    </centerbox>
+        <box vertical>
+          {bind(audio, 'speakers').as((d) =>
+            d.map((speaker) => {
+              if (speaker.get_is_default())
+                <button>
+                  <box>
+                    <label label={speaker.description} />
+                  </box>
+                </button>
+            })
+          )}
+          {bind(audio, 'speakers').as((d) =>
+            d.map((speaker) => (
+              <button
+                onClicked={() => {
+                  speaker.set_mute(!speaker.get_mute())
+                }}>
+                <label label={speaker.description} />
+              </button>
+            ))
+          )}
+        </box>
+      </box>
+    </box >
   )
 }
 
