@@ -17,16 +17,12 @@
     packages = with pkgs; [
       # Tools
       carapace
-      zoxide
-      starship
-      tmux
       yazi
       p7zip
       unzip
       ripgrep
       fd
       lazygit
-      fzf
       wget
       cliphist
       tree-sitter
