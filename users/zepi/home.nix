@@ -64,17 +64,11 @@
       ln -sf "/home/zepi/.nixos/users/zepi/hypr/hyprland.conf" "/home/zepi/.config/hypr"
       ln -sf "/home/zepi/.nixos/users/zepi/hypr/land" "/home/zepi/.config/hypr"
 
-      # nushell
-      ln -sf "/home/zepi/.nixos/users/zepi/nushell" "/home/zepi/.config"
-
       # nvim
       ln -sf "/home/zepi/.nixos/users/zepi/nvim" "/home/zepi/.config"
 
       # ideavim
       ln -sf "/home/zepi/.nixos/users/zepi/idea/.ideavimrc" "/home/zepi/"
-
-      # starship
-      ln -sf "/home/zepi/.nixos/users/zepi/starship/starship.toml" "/home/zepi/.config"
 
       # onedrive
       if [ -e "/home/zepi/.onedrive" ]; then

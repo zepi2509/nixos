@@ -4,6 +4,7 @@
 {
   imports = [
     ./overlays.nix
+    ./shell.nix
   ];
 
   nix.settings = {
