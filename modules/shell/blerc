@@ -4,7 +4,6 @@
 bleopt prompt_ps1_final=
 bleopt prompt_ps1_transient=
 
-bleopt prompt_rps1='\w'
 bleopt prompt_rps1_final=
 bleopt prompt_rps1_transient=
 
@@ -12,6 +11,8 @@ bleopt prompt_status_line=
 
 bleopt prompt_ruler=empty-line
 
+bleopt exec_elapsed_mark=
+bleopt exec_elapsed_enabled=
 
 ##-----------------------------------------------------------------------------
 ## Color options
