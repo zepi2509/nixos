@@ -2,8 +2,26 @@
 
 add_newline = false
 
+format = '''
+╭─╴(bold)$directory╶(─╴$git_branch$git_status╶)┄
+╰╴$character
+'''
+right_format = '''
+$all
+$cmd_duration
+'''
+
 [character]
 success_symbol = '[\$](green)'
 error_symbol = '[\$](red)'
 vimcmd_symbol = "[#](white)"
 vimcmd_visual_symbol = "[#](bold yellow)"
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style)'
+
+[git_branch]
+format = "[($branch(:$remote_branch))]($style)"
+
+[git_status]
+format = '( [\[$all_status$ahead_behind\]]($style))'
