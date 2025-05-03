@@ -7,6 +7,7 @@
       blesh
       zoxide
       fastfetch
+      eza
     ];
 
     etc.inputrc.source = ./inputrc;
@@ -14,6 +15,10 @@
     etc.blerc.source = ./blerc;
 
     shellAliases = {
+      l = null;
+      ls = "eza -1 --color=auto --icons=auto";
+      ll = "ls -lao";
+      tree = "ls -T";
       lg = "lazygit";
     };
   };
