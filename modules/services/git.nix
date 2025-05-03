@@ -20,4 +20,8 @@
       };
     };
   };
+
+  programs.lazygit = {
+    enable = true;
+  };
 }

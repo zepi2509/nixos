@@ -12,6 +12,10 @@
     etc.inputrc.source = ./inputrc;
     etc."starship.toml".source = ./starship.toml;
     etc.blerc.source = ./blerc;
+
+    shellAliases = {
+      lg = "lazygit";
+    };
   };
 
   programs.starship = {
@@ -53,5 +57,4 @@
   programs.bat = {
     enable = true;
   };
-
 }

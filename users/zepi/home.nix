@@ -22,7 +22,6 @@
       unzip
       ripgrep
       fd
-      lazygit
       wget
       cliphist
       tree-sitter
