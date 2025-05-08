@@ -20,6 +20,8 @@
       ll = "ls -lao";
       tree = "ls -T";
       lg = "lazygit";
+      v = "nvim";
+      off = "poweroff";
     };
   };
 
