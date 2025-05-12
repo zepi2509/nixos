@@ -50,7 +50,6 @@
       cargo
       gcc
       go
-      nodejs_23
       mermaid-cli
     ];
 
