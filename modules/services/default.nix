@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./firewall.nix
     ./secretservice.nix
     ./git.nix
     ./audio.nix
