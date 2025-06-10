@@ -7,6 +7,7 @@
     ./hypridle.nix
     # ./notifcations.nix
     ./backlight.nix
+    ./steam.nix
   ];
 
   environment.systemPackages = with pkgs; [
