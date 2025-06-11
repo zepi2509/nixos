@@ -21,6 +21,10 @@
         efiSupport = true;
         device = "nodev";
         theme = pkgs.minimal-grub-theme;
+        splashImage = null;
+        extraConfig = ''
+          set timeout_style=hidden
+        '';
       };
       efi.canTouchEfiVariables = true;
       timeout = 0;
@@ -36,16 +40,16 @@
       ];
     };
 
-    consoleLogLevel = 3;
+    consoleLogLevel = 0;
     initrd.verbose = false;
+    initrd.systemd.enable = false;
     kernelParams = [
       "quiet"
-      "splash"
-      "boot.shell_on_fail"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
       "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
+      "splash"
     ];
-
   };
 
   networking = {
