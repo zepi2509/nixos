@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   stylix = {
@@ -12,5 +12,13 @@
       popups = 0.8;
       terminal = 0.8;
     };
+
+    iconTheme = {
+      enable = true;
+      package = pkgs.adwaita-icon-theme;
+      light = "Adwaita";
+      dark = "Adwaita";
+    };
   };
+
 }

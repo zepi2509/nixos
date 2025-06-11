@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -14,13 +14,38 @@
     ../../modules/languages
     ../../users/zepi
   ];
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 3;
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        theme = pkgs.minimal-grub-theme;
+      };
+      efi.canTouchEfiVariables = true;
+      timeout = 0;
     };
 
-    efi.canTouchEfiVariables = true;
+    plymouth = {
+      enable = true;
+      theme = "black_hud";
+      themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "black_hud" ];
+        })
+      ];
+    };
+
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+
   };
 
   networking = {

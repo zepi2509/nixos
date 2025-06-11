@@ -35,5 +35,10 @@
         name = "JetBrainsMono Nerd Font Mono";
       };
     };
+
+    targets = {
+      grub.enable = false;
+      plymouth.enable = false;
+    };
   };
 }
