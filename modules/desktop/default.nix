@@ -8,6 +8,7 @@
     # ./notifcations.nix
     ./backlight.nix
     ./steam.nix
+    ./fonts.nix
   ];
 
   environment.systemPackages = with pkgs; [
