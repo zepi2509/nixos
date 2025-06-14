@@ -8,6 +8,7 @@
       zoxide
       fastfetch
       eza
+      atuin
     ];
 
     etc.inputrc.source = ./inputrc;
@@ -52,13 +53,14 @@
 
 
       export _ZO_DOCTOR=0
+      eval "$(atuin init bash)"
       eval "$(zoxide init --cmd cd bash)"
     '';
   };
 
   programs.fzf = {
     fuzzyCompletion = true;
-    keybindings = true;
+    keybindings = false;
   };
 
   programs.bat = {
