@@ -8,6 +8,7 @@
     ./bluetooth.nix
     ./battery.nix
     ./onedrive.nix
-    ./vpn.nix
+    ./flatpak.nix
+    # ./vpn.nix
   ];
 }
