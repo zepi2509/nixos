@@ -18,8 +18,21 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim.url = "github:zepi2509/nvim-flake";
-    stylix.url = "github:danth/stylix";
+    neovim = {
+      url = "github:zepi2509/nvim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    fh-kiel-vpn = {
+      url = "github:zepi2509/fh-kiel-vpn-flake";
+    };
   };
 
   outputs = { nixpkgs, ... }@inputs: 
