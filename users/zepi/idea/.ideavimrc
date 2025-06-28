@@ -84,16 +84,20 @@ nnoremap <leader>gc :action ActivateCommitToolWindow<CR>
 let g:WhichKeyDesc_commit = '<leader>gc [c]ommit'
 nnoremap <leader>gp :action Vcs.Push<CR>
 let g:WhichKeyDesc_push = '<leader>gp [p]ush'
+let g:WhichKeyDesc_gitWindow = '<leader>gg [g]it'
+nnoremap <leader>gg :action ActivateVersionControlToolWindow<CR>
 
 " - Documentation
 nnoremap <C-k> :action QuickJavaDoc<CR>
 
 " - ToolWindows
 let g:WhichKeyDesc_toolwindow = '<leader>w [w]indow'
-let g:WhichKeyDesc_project = '<leader>we [w]indow [e]xplorer'
-noremap <leader>we :action ActivateProjectToolWindow<CR>
+let g:WhichKeyDesc_project = '<leader>fe [f]ind [e]xplorer'
+noremap <leader>fe :action ActivateProjectToolWindow<CR>
 let g:WhichKeyDesc_run = '<leader>wr [w]indow [r]un'
 noremap <leader>wr :action ActivateRunToolWindow<CR>
+let g:WhichKeyDesc_debug = '<leader>wd [w]indow [d]ebug'
+noremap <leader>wd :action ActivateDebugToolWindow<CR>
 let g:WhichKeyDesc_problems = '<leader>wp [w]indow [p]roblems'
 noremap <leader>wp :action ActivateProblemsViewToolWindow<CR>
 
