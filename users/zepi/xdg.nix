@@ -1,18 +1,23 @@
-{ config, lib, ... }:
+{ ... }:
 
 {
   xdg = {
     enable = true;
 
     desktopEntries = {
-      # zen = {
-      #   name = "Zen Browser";
-      #   genericName = "Web Browser";
-      #   exec = "zen-browser %U";
-      #   terminal = false;
-      #   categories = [ "Network" "WebBrowser" ];
-      #   mimeType = [ "text/html" "text/xml" "x-scheme-handler/http" "x-scheme-handler/https" ];
-      # };
+      superhuman = {
+        name = "Superhuman";
+        genericName = "Email";
+        exec = "chromium --app=https://mail.superhuman.com/";
+        terminal = false;
+        categories = [ "Network" "Office" "Email" ];
+      };
+      jetbains-toolbox = {
+        name = "JetBrains Toolbox";
+        exec = "jetbrains-toolbox";
+        terminal = false;
+        categories = [ "Development" "IDE" ];
+      };
     };
 
     mime.enable = true;
