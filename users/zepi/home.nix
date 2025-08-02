@@ -7,7 +7,6 @@
     ./hypr/hyprpaper.nix
     ./hypr/hyprlock.nix
     ./xdg.nix
-    ./ags
   ];
 
   home = {
