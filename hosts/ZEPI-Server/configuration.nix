@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -38,7 +38,6 @@
     isNormalUser = true;
     description = "Noah Zepner";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
   };
 
   services.getty.autologinUser = "zepi";

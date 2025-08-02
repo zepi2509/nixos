@@ -23,6 +23,8 @@
       lg = "lazygit";
       v = "nvim";
       off = "poweroff";
+      wifi = "impala";
+      bt = "bluetui";
     };
   };
 

@@ -54,7 +54,11 @@
 
   networking = {
     hostName = "ZEPI-Notebook";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+    wireless.iwd.enable = true;
     extraHosts = ''
       192.168.178.25 dyndns.zepner.dev
     '';

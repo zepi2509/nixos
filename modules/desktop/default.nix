@@ -17,5 +17,6 @@
     chromium
     rofi-wayland
     dunst
+    impala
   ];
 }
