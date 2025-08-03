@@ -1,0 +1,108 @@
+{
+  "general": {
+    "apps": {
+      "terminal": [
+        "ghostty"
+      ],
+      "audio": [
+        "pavucontrol"
+      ]
+    }
+  },
+  "background": {
+    "enabled": true
+  },
+  "bar": {
+    "dragThreshold": 20,
+    "persistent": false,
+    "showOnHover": false,
+    "status": {
+      "showAudio": true,
+      "showBattery": true,
+      "showBluetooth": true,
+      "showKbLayout": false,
+      "showNetwork": true
+    },
+    "workspaces": {
+      "activeIndicator": true,
+      "activeLabel": "󰮯 ",
+      "activeTrail": false,
+      "label": "  ",
+      "occupiedBg": false,
+      "occupiedLabel": "󰮯 ",
+      "rounded": true,
+      "showWindows": true,
+      "shown": 3
+    }
+  },
+  "border": {
+    "rounding": 5,
+    "thickness": 5
+  },
+  "dashboard": {
+    "showOnHover": false,
+    "mediaUpdateInterval": 500,
+    "visualiserBars": 45
+  },
+  "launcher": {
+    "actionPrefix": ">",
+    "dragThreshold": 50,
+    "vimKeybinds": true,
+    "enableDangerousActions": false,
+    "maxShown": 8,
+    "maxWallpapers": 9,
+    "useFuzzy": {
+      "apps": false,
+      "actions": false,
+      "schemes": false,
+      "variants": false,
+      "wallpapers": false
+    }
+  },
+  "lock": {
+    "maxNotifs": 5
+  },
+  "notifs": {
+    "actionOnClick": false,
+    "clearThreshold": 0.3,
+    "defaultExpireTimeout": 5000,
+    "expandThreshold": 20,
+    "expire": false
+  },
+  "osd": {
+    "hideDelay": 2000
+  },
+  "paths": {
+    "mediaGif": "root:/assets/bongocat.gif",
+    "sessionGif": "root:/assets/kurukuru.gif",
+    "wallpaperDir": "~/Images/Wallpaper/"
+  },
+  "services": {
+    "weatherLocation": "54.334029080861455, 10.082635778156192",
+    "useFahrenheit": false,
+    "useTwelveHourClock": false
+  },
+  "session": {
+    "dragThreshold": 30,
+    "vimKeybinds": true,
+    "commands": {
+      "logout": [
+        "loginctl",
+        "terminate-user",
+        ""
+      ],
+      "shutdown": [
+        "systemctl",
+        "poweroff"
+      ],
+      "hibernate": [
+        "systemctl",
+        "hibernate"
+      ],
+      "reboot": [
+        "systemctl",
+        "reboot"
+      ]
+    }
+  }
+}

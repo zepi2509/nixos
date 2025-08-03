@@ -23,8 +23,15 @@
     };
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
+    };
+    zepi-shell = {
+      url = "github:zepi2509/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    caelestia = {
+      url = "github:caelestia-dots/cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.caelestia-shell.follows = "zepi-shell";
     };
   };
 
