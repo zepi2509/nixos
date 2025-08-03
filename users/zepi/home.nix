@@ -63,6 +63,11 @@
       # ideavim
       ln -sf "/home/zepi/.nixos/users/zepi/idea/.ideavimrc" "/home/zepi/"
 
+      # calestia
+      mkdir -p "/home/zepi/.config/caelestia/"
+      ln -sf "/home/zepi/.nixos/modules/desktop/caelestia/config.json" "/home/zepi/.config/caelestia/shell.json"
+
+
       # onedrive
       if [ -e "/home/zepi/.onedrive" ]; then
         ln -sf "/home/zepi/.onedrive/Documents" "/home/zepi"
@@ -70,7 +75,13 @@
         ln -sf "/home/zepi/.onedrive/Videos" "/home/zepi"
         ln -sf "/home/zepi/.onedrive/Musik" "/home/zepi"
       fi
+
+      # wallpapers
+      rm -rf /home/zepi/Images/Wallpaper/nixos/
+      mkdir -p /home/zepi/Images/Wallpaper/nixos/
+      cp -r /home/zepi/.nixos/users/zepi/wallpapers/* /home/zepi/Images/Wallpaper/nixos/
     '';
+
 
     stateVersion = "25.05";
   };
