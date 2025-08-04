@@ -10,6 +10,7 @@
     ./onedrive.nix
     ./flatpak.nix
     ./printing.nix
+    ./power.nix
     # ./vpn.nix
   ];
 }
