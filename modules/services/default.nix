@@ -9,6 +9,7 @@
     ./battery.nix
     ./onedrive.nix
     ./flatpak.nix
+    ./printing.nix
     # ./vpn.nix
   ];
 }
