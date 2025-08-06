@@ -4,7 +4,6 @@
     ./caelestia
     ./stylix.nix
     ./hyprland.nix
-    ./hyprlock.nix
     ./hypridle.nix
     ./backlight.nix
     ./steam.nix

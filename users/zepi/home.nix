@@ -5,7 +5,6 @@
     ./applications
     ./services
     ./hypr/hyprpaper.nix
-    ./hypr/hyprlock.nix
     ./xdg.nix
   ];
 
