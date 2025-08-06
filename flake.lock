@@ -958,11 +958,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1754323186,
-        "narHash": "sha256-ItRJIIBrT4OIUKkbCR0QWafFUN6TghaSaLCSo8AedE0=",
+        "lastModified": 1754482516,
+        "narHash": "sha256-wM80lqDItne/Lxg6/Zjv3sGGAjE2uLth+MuO03XeVPM=",
         "owner": "zepi2509",
         "repo": "shell",
-        "rev": "a7dc9cb321c5041e7fb6882f2ab073cfaab3aefa",
+        "rev": "a54448655dcfce8872f92c793552b7a46bbf32a5",
         "type": "github"
       },
       "original": {
