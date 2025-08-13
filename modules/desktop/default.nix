@@ -16,5 +16,6 @@
     chromium
     rofi-wayland
     impala
+    eog
   ];
 }
