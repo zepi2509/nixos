@@ -14,7 +14,6 @@
     ghostty
     inputs.zen-browser.packages."${system}".default
     chromium
-    rofi-wayland
     impala
     eog
   ];

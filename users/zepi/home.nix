@@ -37,8 +37,6 @@
       zoom-us
       signal-desktop
       obsidian
-      whatsie
-      alacritty
       zotero
 
       # Languages
