@@ -9,6 +9,7 @@
     enable = true;
     packages = [
       "com.usebottles.bottles"
+      "com.github.iwalton3.jellyfin-media-player"
     ];
   };
 }
