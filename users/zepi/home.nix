@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
-  {
+{
   imports = [
+    ./nvim.nix
     ./stylix.nix
     ./applications
     ./services
@@ -55,7 +56,7 @@
       ln -sf "/home/zepi/.nixos/users/zepi/hypr/land" "/home/zepi/.config/hypr"
 
       # nvim
-      ln -sf "/home/zepi/.nixos/users/zepi/nvim" "/home/zepi/.config"
+      # ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/nvim" "/home/zepi/.config"
 
       # ideavim
       ln -sf "/home/zepi/.nixos/users/zepi/idea/.ideavimrc" "/home/zepi/"
