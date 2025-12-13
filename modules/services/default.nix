@@ -4,6 +4,7 @@
     ./firewall.nix
     ./secretservice.nix
     ./git.nix
+    ./ai.nix
     ./audio.nix
     ./bluetooth.nix
     ./battery.nix
