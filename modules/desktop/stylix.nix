@@ -7,7 +7,6 @@
 
   stylix = {
     enable = true;
-    image = ../../users/zepi/wallpapers/black-and-white-river.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/classic-dark.yaml";
     polarity = "dark";
 
