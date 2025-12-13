@@ -38,7 +38,7 @@
   # Global packages
   environment.systemPackages = with pkgs; [
     wl-clipboard
-    inputs.neovim.packages."${system}".nightly
+    inputs.neovim.packages."${pkgs.stdenv.hostPlatform.system}".nightly
     htop
   ];
 }
