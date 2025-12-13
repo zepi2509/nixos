@@ -5,9 +5,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
+    hyprland.url = "github:hyprwm/Hyprland";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,17 +32,12 @@
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs: 
-  let
-    system = "x86_64-linux";
-  in
+  outputs = { nixpkgs, ... } @ inputs: 
   {
     nixosConfigurations = {
       "ZEPI-Notebook" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
-        modules = [ 
-            ./hosts/ZEPI-Notebook
-          ];
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/ZEPI-Notebook ];
       };
 
       "ZEPI-Server" = nixpkgs.lib.nixosSystem {

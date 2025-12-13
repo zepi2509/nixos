@@ -1,4 +1,4 @@
-{ inputs, system, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./caelestia
@@ -12,7 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     ghostty
-    inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     chromium
     impala
     eog
