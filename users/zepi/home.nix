@@ -5,7 +5,6 @@
     ./stylix.nix
     ./applications
     ./services
-    ./hypr/hyprpaper.nix
     ./xdg.nix
   ];
 
@@ -50,16 +49,16 @@
       mermaid-cli
     ];
 
-    activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+    activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
       # hypr
-      ln -sf "/home/zepi/.nixos/users/zepi/hypr/hyprland.conf" "/home/zepi/.config/hypr"
-      ln -sf "/home/zepi/.nixos/users/zepi/hypr/land" "/home/zepi/.config/hypr"
+      ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/hypr/hyprland.conf" "/home/zepi/.config/hypr"
+      ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/hypr/land" "/home/zepi/.config/hypr"
 
       # nvim
       # ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/nvim" "/home/zepi/.config"
 
       # ideavim
-      ln -sf "/home/zepi/.nixos/users/zepi/idea/.ideavimrc" "/home/zepi/"
+      ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/.ideavimrc" "/home/zepi/"
 
       # calestia
       mkdir -p "/home/zepi/.config/caelestia/"
@@ -77,7 +76,7 @@
       # wallpapers
       rm -rf /home/zepi/Images/Wallpaper/nixos/
       mkdir -p /home/zepi/Images/Wallpaper/nixos/
-      cp -r /home/zepi/.nixos/users/zepi/wallpapers/* /home/zepi/Images/Wallpaper/nixos/
+      cp -r /home/zepi/.nixos/users/zepi/.wallpapers/* /home/zepi/Images/Wallpaper/nixos/
     '';
 
 
