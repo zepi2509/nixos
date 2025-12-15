@@ -17,18 +17,28 @@
 
   customization.overlays.enable = true;
 
-  programs.nh = {
-    enable = true;
-    clean = {
+  programs = {
+    nix-ld = {
       enable = true;
-      extraArgs = "--keep-since 5d --keep 3";
+      libraries = [ ];
     };
-    flake = "/home/zepi/.nixos";
-  };
-
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 5d --keep 3";
+      };
+      flake = "/home/zepi/.nixos";
+    };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+    };
   };
 
   environment.sessionVariables = {
@@ -38,7 +48,6 @@
   # Global packages
   environment.systemPackages = with pkgs; [
     wl-clipboard
-    inputs.neovim.packages."${pkgs.stdenv.hostPlatform.system}".nightly
     htop
   ];
 }
