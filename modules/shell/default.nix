@@ -11,9 +11,11 @@
       atuin
     ];
 
-    etc.inputrc.source = ./inputrc;
-    etc."starship.toml".source = ./starship.toml;
-    etc.blerc.source = ./blerc;
+    etc = {
+      inputrc.source = ./inputrc;
+      "starship.toml".source = ./starship.toml;
+      blerc.source = ./blerc;
+    };
 
     shellAliases = {
       l = null;
@@ -28,44 +30,46 @@
     };
   };
 
-  programs.starship = {
-    enable = false;
-    settings = {
-      add_newline = false;
-      character = {
-        format = "$symbol ";
-        success_symbol = "[>](green)";
-        error_symbol = "[>](red)";
-        vicmd_symbol = "[#](white)";
+  programs = {
+    starship = {
+      enable = false;
+      settings = {
+        add_newline = false;
+        character = {
+          format = "$symbol ";
+          success_symbol = "[>](green)";
+          error_symbol = "[>](red)";
+          vicmd_symbol = "[#](white)";
+        };
       };
     };
-  };
 
-  programs.bash = {
-    interactiveShellInit = ''
-      fastfetch
+    bash = {
+      interactiveShellInit = ''
+        fastfetch
 
-      export STARSHIP_CONFIG=/etc/starship.toml
-      eval "$(starship init bash)"
+        export STARSHIP_CONFIG=/etc/starship.toml
+        eval "$(starship init bash)"
 
-      [[ $- == *i* ]] &&
-        source "${pkgs.blesh}/share/blesh/ble.sh" --rcfile "/etc/blerc"
+        [[ $- == *i* ]] &&
+          source "${pkgs.blesh}/share/blesh/ble.sh" --rcfile "/etc/blerc"
 
-      [[ ! $\{BLE_VERSION-} ]] || ble-attach
+        [[ ! $\{BLE_VERSION-} ]] || ble-attach
 
 
-      export _ZO_DOCTOR=0
-      eval "$(atuin init bash)"
-      eval "$(zoxide init --cmd cd bash)"
-    '';
-  };
+        export _ZO_DOCTOR=0
+        eval "$(atuin init bash)"
+        eval "$(zoxide init --cmd cd bash)"
+      '';
+    };
 
-  programs.fzf = {
-    fuzzyCompletion = true;
-    keybindings = false;
-  };
+    fzf = {
+      fuzzyCompletion = true;
+      keybindings = false;
+    };
 
-  programs.bat = {
-    enable = true;
+    bat = {
+      enable = true;
+    };
   };
 }
