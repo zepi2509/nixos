@@ -79,8 +79,7 @@
       cp -r /home/zepi/.nixos/users/zepi/.wallpapers/* /home/zepi/Images/Wallpaper/nixos/
     '';
 
-
-    stateVersion = "25.05";
+    stateVersion = "25.11";
   };
 
   programs.home-manager.enable = true;

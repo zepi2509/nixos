@@ -77,7 +77,6 @@
     };
   };
 
-
   services.xserver.xkb = {
     layout = "de";
     variant = "";
@@ -85,5 +84,5 @@
 
   console.keyMap = "de";
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
