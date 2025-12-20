@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  session = "uwsm start default";
+  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
+  session = "uwsm start hyprland-uwsm.desktop";
   username = "zepi";
 in
 {
