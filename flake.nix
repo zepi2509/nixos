@@ -25,25 +25,21 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    caelestia = {
-      url = "github:caelestia-dots/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.caelestia-shell.follows = "caelestia-shell";
-    };
   };
 
-  outputs = { nixpkgs, ... } @ inputs: 
-  {
-    nixosConfigurations = {
-      "ZEPI-Notebook" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/ZEPI-Notebook ];
-      };
+  outputs =
+    { nixpkgs, ... }@inputs:
+    {
+      nixosConfigurations = {
+        "ZEPI-Notebook" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/ZEPI-Notebook ];
+        };
 
-      "ZEPI-Server" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/ZEPI-Server ];
+        "ZEPI-Server" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/ZEPI-Server ];
+        };
       };
     };
-  };
 }
