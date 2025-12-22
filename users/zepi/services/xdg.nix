@@ -1,5 +1,7 @@
-{ ... }:
-
+{ config, ... }:
+let
+  dotfiles = config.lib.file.mkOutOfStoreSymlink ../.dotfiles;
+in
 {
   xdg = {
     enable = true;
@@ -10,10 +12,18 @@
         genericName = "Email";
         exec = "chromium --app=https://mail.superhuman.com/";
         terminal = false;
-        categories = [ "Network" "Office" "Email" ];
+        categories = [
+          "Network"
+          "Office"
+          "Email"
+        ];
       };
     };
 
     mime.enable = true;
+
+    configFile = {
+      ".ideavimrc".source = "${dotfiles}/.idevimrc";
+    };
   };
 }

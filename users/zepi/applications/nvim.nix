@@ -5,7 +5,7 @@
   ...
 }:
 let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink ./.dotfiles;
+  dotfiles = config.lib.file.mkOutOfStoreSymlink ../.dotfiles;
 in
 {
   programs.neovim = {
