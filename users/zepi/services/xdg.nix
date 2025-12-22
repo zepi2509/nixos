@@ -1,7 +1,4 @@
-{ config, ... }:
-let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink ../.dotfiles;
-in
+{ config, mkDotfiles, ... }:
 {
   xdg = {
     enable = true;
@@ -23,7 +20,7 @@ in
     mime.enable = true;
 
     configFile = {
-      ".ideavimrc".source = "${dotfiles}/.idevimrc";
+      ".ideavimrc".source = mkDotfiles ".idevimrc";
     };
   };
 }

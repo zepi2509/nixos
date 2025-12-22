@@ -1,11 +1,12 @@
 { config, pkgs, ... }:
 {
-  _module.args = {
-    mkDotfiles =
-      subpath:
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nixos/users/zepi/.dotfiles/${subpath}";
-
-  };
+  _module.args =
+    let
+      dotfiles = ./.dotfiles;
+    in
+    {
+      mkDotfiles = subpath: "${dotfiles}/${subpath}";
+    };
 
   imports = [
     ./services

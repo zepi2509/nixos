@@ -1,16 +1,14 @@
 {
   config,
   lib,
+  mkDotfiles,
   pkgs,
   ...
 }:
-let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink ../.dotfiles;
-in
 {
   programs.neovim = {
     enable = true;
-    extraLuaConfig = lib.fileContents "${dotfiles}/nvim/init.lua";
+    extraLuaConfig = lib.fileContents (mkDotfiles "nvim/init.lua");
     extraLuaPackages =
       extraPkgs: with extraPkgs; [
         luarocks
@@ -23,7 +21,7 @@ in
   };
 
   xdg.configFile = {
-    "nvim".source = "${dotfiles}/nvim";
+    "nvim".source = mkDotfiles "nvim";
     "nvim/init.lua".enable = false;
   };
 }
