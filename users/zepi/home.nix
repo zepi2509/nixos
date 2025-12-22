@@ -1,70 +1,15 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./nvim.nix
-    ./stylix.nix
-    ./applications
     ./services
-    ./xdg.nix
+    ./applications
   ];
 
   home = {
     username = "zepi";
     homeDirectory = "/home/zepi";
 
-    packages = with pkgs; [
-      # Tools
-      carapace
-      yazi
-      p7zip
-      unzip
-      ripgrep
-      fd
-      wget
-      cliphist
-      tree-sitter
-      pnpm
-      eyedropper
-      onefetch
-      typst
-
-      # Apps
-      jetbrains-toolbox
-      spotify
-      ausweisapp
-      zathura
-      nautilus
-      zoom-us
-      signal-desktop
-      obsidian
-      zotero
-
-      # Languages
-      typst
-      tinymist
-      zig
-      cargo
-      gcc
-      go
-      mermaid-cli
-    ];
-
     activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-      # hypr
-      ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/hypr/hyprland.conf" "/home/zepi/.config/hypr"
-      ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/hypr/land" "/home/zepi/.config/hypr"
-
-      # nvim
-      # ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/nvim" "/home/zepi/.config"
-
-      # ideavim
-      ln -sf "/home/zepi/.nixos/users/zepi/.dotfiles/.ideavimrc" "/home/zepi/"
-
-      # calestia
-      mkdir -p "/home/zepi/.config/caelestia/"
-      ln -sf "/home/zepi/.nixos/modules/desktop/caelestia/config.json" "/home/zepi/.config/caelestia/shell.json"
-
-
       # onedrive
       if [ -e "/home/zepi/.onedrive" ]; then
         ln -sf "/home/zepi/.onedrive/Documents" "/home/zepi"

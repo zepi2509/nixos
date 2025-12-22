@@ -1,4 +1,12 @@
-{ inputs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  ...
+}:
+let
+  dotfiles = config.lib.file.mkOutOfStoreSymlink ../.dotfiles;
+in
 {
   imports = [
     inputs.caelestia-shell.homeManagerModules.default
@@ -14,5 +22,6 @@
     cli = {
       enable = true;
     };
+    extraConfig = lib.fileContents "${dotfiles}/caelestia/shell.json";
   };
 }

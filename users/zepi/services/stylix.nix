@@ -1,8 +1,6 @@
 { pkgs, ... }:
-
 {
   stylix = {
-    image = ./.wallpapers/black-and-white-river.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/classic-dark.yaml";
     polarity = "dark";
     opacity = {

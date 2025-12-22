@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    ./caelestia
     ./stylix.nix
     ./hyprland.nix
     ./hypridle.nix
