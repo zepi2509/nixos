@@ -7,6 +7,7 @@
 
   stylix = {
     enable = true;
+
     base16Scheme = "${pkgs.base16-schemes}/share/themes/classic-dark.yaml";
     polarity = "dark";
 
@@ -33,6 +34,13 @@
         package = pkgs.nerd-fonts.jetbrains-mono;
         name = "JetBrainsMono Nerd Font Mono";
       };
+    };
+
+    icons = {
+      enable = true;
+      package = pkgs.adwaita-icon-theme;
+      light = "Adwaita";
+      dark = "Adwaita";
     };
 
     targets = {
