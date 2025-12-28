@@ -25,6 +25,7 @@ in
     eyedropper
     onefetch
     typst
+    shotwell
 
     # Apps
     jetbrains-toolbox
