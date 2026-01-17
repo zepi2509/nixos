@@ -1,6 +1,6 @@
 GOOSE_PROVIDER: openrouter
 GOOSE_MODEL: anthropic/claude-opus-4.5
-GOOSE_MODE: auto
+GOOSE_MODE: smart_approve
 GOOSE_ENABLE_ROUTER: true
 extensions:
   developer:
