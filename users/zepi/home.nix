@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   _module.args =
     let
-      dotfiles = "${config.home.homeDirectory}/.nixos/users/zepi/.dotfiles";
+      dotfiles = "${config.home.homeDirectory}/.dotfiles";
     in
     {
       mkDotfiles = subpath: "${dotfiles}/${subpath}";
@@ -17,6 +17,12 @@
   home = {
     username = "zepi";
     homeDirectory = "/home/zepi";
+
+    activation.cloneDotfiles = lib.hm.dag.entryBefore [ "writeBoundary" ] ''
+      if [ ! -d "$HOME/.dotfiles" ]; then
+        ${pkgs.git}/bin/git clone git@github.com:zepi2509/dotfiles.git "$HOME/.dotfiles"
+      fi
+    '';
 
     activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
       # onedrive

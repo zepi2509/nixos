@@ -45,7 +45,7 @@ in
 
     script = ''
       #!/usr/bin/env bash
-      WATCH_DIR="/home/zepi/.nixos/users/zepi/.dotfiles"
+      WATCH_DIR="/home/zepi/.dotfiles"
       DEBOUNCE_SECONDS=30
 
       cd "$WATCH_DIR" || exit 1
