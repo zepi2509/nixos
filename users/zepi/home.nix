@@ -2,10 +2,11 @@
 {
   _module.args =
     let
-      dotfiles = ./.dotfiles;
+      dotfiles = "${config.home.homeDirectory}/.nixos/users/zepi/.dotfiles";
     in
     {
       mkDotfiles = subpath: "${dotfiles}/${subpath}";
+      mkDotfilesOutOfStore = subpath: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${subpath}";
     };
 
   imports = [

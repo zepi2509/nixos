@@ -1,6 +1,7 @@
 {
+  config,
   pkgs,
-  mkDotfiles,
+  mkDotfilesOutOfStore,
   ...
 }:
 {
@@ -9,6 +10,6 @@
   ];
 
   xdg.configFile = {
-    "goose".source = mkDotfiles "goose";
+    "goose".source = mkDotfilesOutOfStore "goose";
   };
 }

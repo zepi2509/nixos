@@ -1,4 +1,10 @@
-{ config, lib, mkDotfiles, ... }:
+{
+  config,
+  lib,
+  mkDotfiles,
+  mkDotfilesOutOfStore,
+  ...
+}:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -7,7 +13,7 @@
   };
 
   xdg.configFile = {
-    "hypr".source = mkDotfiles "hypr";
+    "hypr".source = mkDotfilesOutOfStore "hypr";
     "hypr/hyprland.conf".enable = false;
   };
 }
