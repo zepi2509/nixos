@@ -18,8 +18,9 @@
     };
 
     shellAliases = {
+      z = "cd";
       l = null;
-      ls = "eza -1 --color=auto --icons=auto";
+      ls = "eza -G -x --color=auto --icons=auto --hyperlink --group-directories-first";
       ll = "ls -lao";
       tree = "ls -T";
       lg = "lazygit";
@@ -59,7 +60,11 @@
 
         export _ZO_DOCTOR=0
         eval "$(atuin init bash)"
-        eval "$(zoxide init --cmd cd bash)"
+        eval "$(zoxide init bash --no-aliases)"
+
+        cd() {
+          __zoxide_z "$@" && eza -G -x --color=auto --icons=auto --hyperlink --group-directories-first
+        }
       '';
     };
 
