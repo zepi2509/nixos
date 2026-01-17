@@ -1,8 +1,6 @@
 {
   inputs,
-  config,
-  lib,
-  mkDotfiles,
+  mkDotfilesOutOfStore,
   ...
 }:
 {
@@ -20,6 +18,9 @@
     cli = {
       enable = true;
     };
-    extraConfig = lib.fileContents (mkDotfiles "caelestia/shell.json");
+  };
+
+  xdg.configFile = {
+    "caelestia".source = mkDotfilesOutOfStore "caelestia";
   };
 }
