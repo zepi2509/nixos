@@ -1,4 +1,4 @@
-{ config, mkDotfiles, ... }:
+{ config, mkDotfilesOutOfStore, ... }:
 {
   xdg = {
     enable = true;
@@ -20,7 +20,7 @@
     mime.enable = true;
 
     configFile = {
-      ".ideavimrc".source = mkDotfiles ".idevimrc";
+      ".ideavimrc".source = mkDotfilesOutOfStore ".ideavimrc";
     };
   };
 }
