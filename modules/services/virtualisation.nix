@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.virt-manager.enable = true;
@@ -9,6 +9,22 @@
       "podman"
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    (devcontainer.overrideAttrs (oldAttrs: {
+      postInstall = ''
+        makeWrapper "${lib.getExe nodejs}" "$out/bin/devcontainer" \
+          --add-flags "$out/libexec/devcontainer.js" \
+          --prefix PATH : ${
+            lib.makeBinPath [
+              git
+              podman
+              podman-compose
+            ]
+          }
+      '';
+    }))
+  ];
 
   virtualisation = {
     libvirtd = {
@@ -23,6 +39,7 @@
     podman = {
       enable = true;
       dockerCompat = true;
+      dockerSocket.enable = true;
       defaultNetwork.settings.dns_enabled = true;
     };
   };
