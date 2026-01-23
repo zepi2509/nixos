@@ -7,6 +7,8 @@
 {
   home.packages = with pkgs; [
     goose-cli
+    uv
+    nodejs
   ];
 
   xdg.configFile = {
