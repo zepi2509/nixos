@@ -3,8 +3,12 @@
 {
   programs.virt-manager.enable = true;
 
-  users.groups.libvirtd.members = [ "zepi" ];
-  # users.extraGroups.vboxusers.members = [ "zepi" ];
+  users.users."zepi" = {
+    extraGroups = [
+      "libvirtd"
+      "podman"
+    ];
+  };
 
   virtualisation = {
     libvirtd = {
@@ -13,7 +17,13 @@
         swtpm.enable = true;
       };
     };
-    # virtualbox.host.enable = true;
     spiceUSBRedirection.enable = true;
+
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 }
