@@ -8,6 +8,7 @@
         name = "Superhuman";
         genericName = "Email";
         exec = "chromium --app=https://mail.superhuman.com/";
+        icon = ../.icons/superhuman-mail.png;
         terminal = false;
         categories = [
           "Network"
