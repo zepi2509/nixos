@@ -41,10 +41,6 @@ in
     # Languages
     typst
     tinymist
-    zig
-    cargo
-    gcc
-    go
-    mermaid-cli
+    nixd
   ];
 }
