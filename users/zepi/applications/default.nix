@@ -40,7 +40,5 @@ in
 
     # Languages
     typst
-    tinymist
-    nixd
   ];
 }
