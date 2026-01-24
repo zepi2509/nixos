@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/classic-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark-dark.yaml";
     polarity = "dark";
 
     cursor = {
