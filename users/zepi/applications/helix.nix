@@ -1,6 +1,9 @@
-{ pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  mkDotfiles,
+  ...
+}: {
   home.packages = with pkgs; [
     tinymist
     nixd
@@ -9,12 +12,10 @@
 
   programs.helix = {
     enable = true;
-    languages = {
-      language = [{
-        name = "nix";
-        auto-format = true;
-        formatter = { command = "alejandra"; };
-      }];
-    };
+    extraConfig = lib.fileContents (mkDotfiles "helix/config.toml");
+  };
+
+  xdg.configFile = {
+    "helix/languages.toml".source = mkDotfiles "helix/languages.toml";
   };
 }
