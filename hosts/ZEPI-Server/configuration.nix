@@ -1,10 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ ... }:
-
-{
+{...}: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -27,17 +24,10 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
-  };
-
-  console.keyMap = "de";
-
   users.users.zepi = {
     isNormalUser = true;
     description = "Noah Zepner";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   services.getty.autologinUser = "zepi";
