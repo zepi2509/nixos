@@ -1,10 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ../../modules
     ../../modules/home-manager.nix
@@ -35,7 +32,7 @@
       theme = "black_hud";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
-          selected_themes = [ "black_hud" ];
+          selected_themes = ["black_hud"];
         })
       ];
     };
@@ -76,13 +73,6 @@
       LC_TIME = "de_DE.UTF-8";
     };
   };
-
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
-  };
-
-  console.keyMap = "de";
 
   system.stateVersion = "25.11";
 }
