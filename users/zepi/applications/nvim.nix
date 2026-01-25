@@ -1,16 +1,14 @@
 {
-  config,
   lib,
   mkDotfiles,
   pkgs,
   ...
-}:
-{
+}: {
   programs.neovim = {
     enable = true;
-    extraLuaConfig = lib.fileContents (mkDotfiles "nvim/init.lua");
-    extraLuaPackages =
-      extraPkgs: with extraPkgs; [
+    initLua = lib.fileContents (mkDotfiles "nvim/init.lua");
+    extraLuaPackages = extraPkgs:
+      with extraPkgs; [
         luarocks
       ];
     extraPackages = with pkgs; [
