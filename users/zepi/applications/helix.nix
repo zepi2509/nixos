@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   mkDotfiles,
   ...
@@ -8,14 +7,12 @@
     tinymist
     nixd
     alejandra
+    taplo
   ];
 
   programs.helix = {
     enable = true;
-    extraConfig = lib.fileContents (mkDotfiles "helix/config.toml");
-  };
-
-  xdg.configFile = {
-    "helix/languages.toml".source = mkDotfiles "helix/languages.toml";
+    settings = fromTOML (builtins.readFile (mkDotfiles "helix/config.toml"));
+    languages = fromTOML (builtins.readFile (mkDotfiles "helix/languages.toml"));
   };
 }
