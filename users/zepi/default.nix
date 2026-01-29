@@ -11,6 +11,7 @@ in {
       "wheel"
       "video"
     ];
+    hashedPassword = "$6$JSUkvlw6GA/6dWmo$ChmSvlv0LRX.zS5ddxZE7icQkYsyLbNu6yQ6BmPo55UYeUev6MEJk20Q1S4dIroofOsI6/KBxwrytSzvd5fEA.";
     shell = pkgs.nushell;
   };
 
