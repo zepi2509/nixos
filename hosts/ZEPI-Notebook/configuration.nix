@@ -4,9 +4,9 @@
 {pkgs, ...}: {
   imports = [
     ../../modules
+    ../../modules/impermanence.nix
     ../../modules/home-manager.nix
     ../../modules/services
-    ../../modules/services/virtualisation.nix
     ../../modules/desktop
     ../../modules/languages
     ../../users/zepi
