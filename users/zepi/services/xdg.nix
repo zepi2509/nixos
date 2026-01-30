@@ -25,6 +25,7 @@
       "gtk-4.0/gtk.css".force = true;
       "gtk-3.0/gtk.css".force = true;
       ".ideavimrc".source = mkDotfilesOutOfStore ".ideavimrc";
+      "nix/nix.conf".source = mkDotfilesOutOfStore "nix/nix.conf";
     };
   };
 }

@@ -1,0 +1,7 @@
+keys:
+  - &zepi age17rdh5mk64ajp7s7ku5znpy33de898svngt2l8fzsrrgc0vnwdfrqj6x22f
+creation_rules:
+  - path_regex: .*$
+    key_groups:
+      - age:
+        - *zepi
