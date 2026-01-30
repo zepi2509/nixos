@@ -1,5 +1,4 @@
-{ config, mkDotfilesOutOfStore, ... }:
-{
+{mkDotfilesOutOfStore, ...}: {
   xdg = {
     enable = true;
 
@@ -21,6 +20,10 @@
     mime.enable = true;
 
     configFile = {
+      "qt6ct/qt6ct.conf".force = true;
+      "qt5ct/qt5ct.conf".force = true;
+      "gtk-4.0/gtk.css".force = true;
+      "gtk-3.0/gtk.css".force = true;
       ".ideavimrc".source = mkDotfilesOutOfStore ".ideavimrc";
     };
   };
