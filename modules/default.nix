@@ -7,7 +7,6 @@
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    access-tokens = ["github.com=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"];
     auto-optimise-store = true;
   };
 
