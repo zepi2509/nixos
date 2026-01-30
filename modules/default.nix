@@ -1,15 +1,13 @@
 # This file is used to set top level configurations, that apply to all hosts
-{ inputs, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./overlays.nix
     ./shell
   ];
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    access-tokens = [ "github.com=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" ];
+    experimental-features = ["nix-command" "flakes"];
+    access-tokens = ["github.com=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"];
     auto-optimise-store = true;
   };
 
@@ -20,7 +18,7 @@
   programs = {
     nix-ld = {
       enable = true;
-      libraries = [ ];
+      libraries = [];
     };
     nh = {
       enable = true;
