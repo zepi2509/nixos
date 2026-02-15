@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  readDotfiles,
   mkDotfilesOutOfStore,
   mkDotfiles,
   ...
@@ -8,12 +9,12 @@
   programs = {
     nushell = {
       enable = true;
-      extraConfig = lib.fileContents (mkDotfilesOutOfStore "nushell/config.nu");
+      extraConfig = readDotfiles "nushell/config.nu";
     };
     starship = {
       enable = true;
       enableNushellIntegration = true;
-      settings = fromTOML (builtins.readFile (mkDotfiles "starship.toml"));
+      settings = fromTOML (readDotfiles "starship.toml");
     };
     zoxide = {
       enable = true;

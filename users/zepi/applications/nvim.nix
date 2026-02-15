@@ -1,12 +1,13 @@
 {
   lib,
+  readDotfiles,
   mkDotfiles,
   pkgs,
   ...
 }: {
   programs.neovim = {
     enable = true;
-    initLua = lib.fileContents (mkDotfiles "nvim/init.lua");
+    initLua = readDotfiles "nvim/init.lua";
     extraLuaPackages = extraPkgs:
       with extraPkgs; [
         luarocks

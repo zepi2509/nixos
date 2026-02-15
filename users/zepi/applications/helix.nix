@@ -1,5 +1,6 @@
 {
   pkgs,
+  readDotfiles,
   mkDotfiles,
   ...
 }: {
@@ -12,7 +13,7 @@
 
   programs.helix = {
     enable = true;
-    settings = fromTOML (builtins.readFile (mkDotfiles "helix/config.toml"));
-    languages = fromTOML (builtins.readFile (mkDotfiles "helix/languages.toml"));
+    settings = fromTOML (readDotfiles "helix/config.toml");
+    languages = fromTOML (readDotfiles "helix/languages.toml");
   };
 }

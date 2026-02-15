@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  readDotfiles,
   mkDotfiles,
   mkDotfilesOutOfStore,
   ...
@@ -9,7 +10,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # started with uwsm
-    extraConfig = lib.fileContents (mkDotfiles "hypr/hyprland.conf");
+    extraConfig = readDotfiles "hypr/hyprland.conf";
   };
 
   xdg.configFile = {
