@@ -1,7 +1,7 @@
 {
   lib,
   readDotfiles,
-  mkDotfiles,
+  mkDotfilesOutOfStore,
   pkgs,
   ...
 }: {
@@ -20,7 +20,7 @@
   };
 
   xdg.configFile = {
-    "nvim".source = mkDotfiles "nvim";
+    "nvim".source = mkDotfilesOutOfStore "nvim";
     "nvim/init.lua".enable = false;
   };
 }
