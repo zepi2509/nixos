@@ -7,8 +7,19 @@
   _module.args = let
     dotfiles = "${config.home.homeDirectory}/.dotfiles";
   in {
+    # Path to dotfiles (for in-store copies)
     mkDotfiles = subpath: "${dotfiles}/${subpath}";
+    
+    # Symlink outside store (for live editing)
     mkDotfilesOutOfStore = subpath: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${subpath}";
+    
+    # Safe content reader - returns placeholder if file doesn't exist yet
+    # Use this for lib.fileContents when dotfiles may not be cloned yet
+    readDotfiles = subpath: let
+      target = "${dotfiles}/${subpath}";
+    in if builtins.pathExists target 
+       then builtins.readFile target 
+       else "# TODO: Clone dotfiles to ${dotfiles}\n";
   };
 
   imports = [
