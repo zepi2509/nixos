@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  device ? "/dev/nvme0n1",
+  inputs,
+  ...
+}: {
   imports = [
     inputs.disko.nixosModules.disko
   ];
@@ -13,8 +17,8 @@
     };
     disk = {
       main = {
+        inherit device;
         type = "disk";
-        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
