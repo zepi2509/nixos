@@ -28,7 +28,7 @@
     };
 
     plymouth = {
-      enable = true;
+      enable = false;
       theme = "black_hud";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
@@ -37,11 +37,11 @@
       ];
     };
 
-    consoleLogLevel = 0;
-    initrd.verbose = false;
+    consoleLogLevel = 3;
+    initrd.verbose = true;
     initrd.systemd.enable = false;
     kernelParams = [
-      "quiet"
+      "loglevel=3"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
