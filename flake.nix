@@ -55,6 +55,20 @@
         ];
       };
 
+      "ZEPI-Notebook-VM" = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          {
+            _module.args.device = "/dev/vda";
+            boot.initrd.availableKernelModules = ["virtio_pci" "virtio_blk"];
+            services = {
+              spice-vdagentd.enable = true;
+            };
+          }
+          ./hosts/ZEPI-Notebook
+        ];
+      };
+
       "ZEPI-Server" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
