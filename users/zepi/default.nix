@@ -3,9 +3,12 @@
   session = "uwsm start hyprland-uwsm.desktop";
   username = "zepi";
 in {
+  users.groups.zepi = {};
+
   users.users.zepi = {
     isNormalUser = true;
     description = "Noah Zepner";
+    group = "zepi";
     extraGroups = [
       "networkmanager"
       "wheel"
