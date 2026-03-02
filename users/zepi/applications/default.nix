@@ -1,13 +1,15 @@
-{ lib, pkgs, ... }:
-let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   files = lib.filterAttrs (
     name: type:
-    type == "regular" && name != "default.nix" && !lib.hasPrefix "_" name && lib.hasSuffix ".nix" name
+      type == "regular" && name != "default.nix" && !lib.hasPrefix "_" name && lib.hasSuffix ".nix" name
   ) (builtins.readDir ./.);
 
   imports = lib.mapAttrsToList (name: _: import (./. + "/${name}")) files;
-in
-{
+in {
   inherit imports;
 
   home.packages = with pkgs; [
@@ -37,6 +39,8 @@ in
     signal-desktop
     obsidian
     zotero
+    gphoto2
+    darktable
 
     # Languages
     typst
