@@ -47,6 +47,9 @@
       "ZEPI-Notebook" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
+          {
+            _module.args.device = "/dev/nvme0n1";
+          }
           ./hosts/ZEPI-Notebook
 
           inputs.nixos-hardware.nixosModules.common-cpu-intel
