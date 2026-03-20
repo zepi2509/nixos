@@ -1,12 +1,8 @@
 {
-  config,
-  lib,
   readDotfiles,
-  mkDotfiles,
   mkDotfilesOutOfStore,
   ...
-}:
-{
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # started with uwsm
