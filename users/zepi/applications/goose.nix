@@ -1,12 +1,10 @@
 {
-  config,
   pkgs,
   mkDotfilesOutOfStore,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
-    goose-cli
+    # goose-cli
     uv
     nodejs
   ];
