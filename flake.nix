@@ -37,7 +37,7 @@
       url = "github:gmodena/nix-flatpak";
     };
     caelestia-shell = {
-      url = "github:caelestia-dots/shell";
+      url = "github:caelestia-dots/shell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
