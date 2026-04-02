@@ -17,8 +17,6 @@
       };
     };
 
-    mime.enable = true;
-
     configFile = {
       "qt6ct/qt6ct.conf".force = true;
       "qt5ct/qt5ct.conf".force = true;

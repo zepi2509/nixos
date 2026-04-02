@@ -54,6 +54,10 @@
       # cp -r /home/zepi/.nixos/users/zepi/.wallpapers/* /home/zepi/Images/Wallpaper/nixos/
     '';
 
+    sessionVariables = {
+      BROWSER = "zen";
+    };
+
     stateVersion = "26.05";
   };
 
