@@ -59,6 +59,8 @@
         ".zen"
         ".mozilla"
         ".zoom"
+        ".local/state/opencode"
+        ".local/share/opencode"
       ];
       files = [
       ];
