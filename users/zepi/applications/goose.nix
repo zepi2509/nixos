@@ -11,6 +11,5 @@
 
   xdg.configFile = {
     "goose".source = mkDotfilesOutOfStore "goose";
-    "agents".source = mkDotfilesOutOfStore "agents";
   };
 }

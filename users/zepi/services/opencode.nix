@@ -1,6 +1,7 @@
 {
   readDotfiles,
   mkDotfiles,
+  mkDotfilesOutOfStore,
   ...
 }: {
   programs.opencode = {
@@ -12,9 +13,14 @@
       then builtins.fromJSON (builtins.readFile target)
       else {};
     context = readDotfiles "opencode/AGENTS.md";
-    agents = mkDotfiles "opencode/agent/";
-    commands = mkDotfiles "opencode/command/";
-    skills = mkDotfiles "opencode/skill/";
-    tools = mkDotfiles "opencode/tool/";
+  };
+
+  home.file.".agents".source = mkDotfilesOutOfStore ".agents";
+
+  xdg.configFile = {
+    "opencode/agents".source = mkDotfilesOutOfStore "opencode/agents";
+    "opencode/commands".source = mkDotfilesOutOfStore "opencode/commands";
+    "opencode/skills".source = mkDotfilesOutOfStore "opencode/skills";
+    "opencode/tools".source = mkDotfilesOutOfStore "opencode/tools";
   };
 }
