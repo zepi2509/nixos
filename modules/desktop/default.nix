@@ -1,11 +1,13 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./stylix.nix
     ./hyprland.nix
     ./hypridle.nix
     ./backlight.nix
-    ./steam.nix
     ./fonts.nix
   ];
 
