@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   environment = {
     systemPackages = with pkgs; [
       starship
@@ -24,7 +22,6 @@
       ll = "ls -lao";
       tree = "ls -T";
       lg = "lazygit";
-      v = "nvim";
       off = "poweroff";
       wifi = "impala";
       bt = "bluetui";

@@ -53,7 +53,6 @@
         ".local/share/JetBrains"
         ".local/share/keyrings"
         ".local/share/nautilus"
-        ".local/share/nvim"
         ".local/share/Steam"
         ".local/share/zoxide"
         ".local/state"

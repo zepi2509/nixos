@@ -1,7 +1,6 @@
 {
   pkgs,
   readDotfiles,
-  mkDotfiles,
   ...
 }: {
   home.packages = with pkgs; [
@@ -13,6 +12,7 @@
 
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     settings = fromTOML (readDotfiles "helix/config.toml");
     languages = fromTOML (readDotfiles "helix/languages.toml");
   };
