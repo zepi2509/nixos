@@ -1,9 +1,16 @@
+# Nix package overlays
+# 
+# Overlays allow customizing or patching packages from nixpkgs.
+# Add custom package definitions here using the pattern:
+#
+# final: prev:
+# {
+#   mypackage = prev.callPackage ./mypackage.nix {};
+# }
+#
+# Currently empty - all packages sourced from nixpkgs directly.
+
 final: prev:
-let
-  # zen = import ./zen.nix final prev;
-  # onedrive = import ./onedrive.nix final prev;
-in
 {
-  # inherit (zen) zen-browser;
-  # inherit (onedrive) onedrive;
+  # Custom packages go here
 }

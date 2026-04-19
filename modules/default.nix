@@ -1,5 +1,5 @@
 # This file is used to set top level configurations, that apply to all hosts
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   imports = [
     ./overlays.nix
     ./shell
@@ -16,7 +16,21 @@
     ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  # Restrict unfree packages to only those explicitly needed
+  # This helps prevent accidentally pulling in proprietary software
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    # Fonts
+    "noto-fonts"  # Google Noto fonts (includes CJK support)
+    
+    # Browsers and multimedia
+    "zen-browser"  # Zen Browser (Chromium-based, mostly open source)
+    
+    # Development/utilities that have open-source alternatives but offer convenience
+    # (uncomment as needed)
+    # "jetbrains-toolbox"
+    # "spotify"
+    # "zoom"
+  ];
 
   customization.overlays.enable = true;
 
@@ -41,7 +55,7 @@
 
   # Global packages
   environment.systemPackages = with pkgs; [
-    wl-clipboard
-    htop
+    wl-clipboard  # Wayland clipboard management
+    htop          # Interactive process viewer
   ];
 }

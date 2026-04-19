@@ -1,5 +1,21 @@
+# NixOS Configuration with Flakes
+#
+# Version Policy: nixos-unstable
+# Rationale: 
+#   - Latest package versions and security updates
+#   - Faster hardware support for newer laptops
+#   - Community packages more current in unstable
+#   - Trade-off: May have occasional breaking changes
+#
+# To pin a specific commit instead:
+#   nixpkgs.url = "github:nixos/nixpkgs/commit/COMMIT_HASH";
+#
+# To use stable release:
+#   nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+
 {
   inputs = {
+    # Main NixOS packages (unstable for latest features and packages)
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nur = {
       url = "github:nix-community/NUR";

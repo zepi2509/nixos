@@ -6,6 +6,25 @@
 }: {
   _module.args = let
     dotfiles = "${config.home.homeDirectory}/.dotfiles";
+    # Safe content reader with helpful fallback
+    # Returns placeholder content if file doesn't exist
+    readDotfilesImpl = subpath: let
+      target = "${dotfiles}/${subpath}";
+      relativePath = builtins.concatStringsSep "/" (lib.splitString "/" subpath);
+    in
+      if builtins.pathExists target
+      then builtins.readFile target
+      else ''
+        # Configuration not available: ${relativePath}
+        # 
+        # This file appears to be missing from your dotfiles repository.
+        # Expected location: ${target}
+        # 
+        # To resolve:
+        # 1. Clone dotfiles: git clone git@github.com:zepi2509/dotfiles.git ~/.dotfiles
+        # 2. Or create the file: touch ${target}
+        # 3. Then rebuild: sudo nixos-rebuild switch --flake .
+      '';
   in {
     # Path to dotfiles (for in-store copies)
     mkDotfiles = subpath: "${dotfiles}/${subpath}";
@@ -13,14 +32,26 @@
     # Symlink outside store (for live editing)
     mkDotfilesOutOfStore = subpath: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${subpath}";
 
-    # Safe content reader - returns placeholder if file doesn't exist yet
-    # Use this for lib.fileContents when dotfiles may not be cloned yet
-    readDotfiles = subpath: let
+    # Safe content reader - use for plain text files
+    readDotfiles = readDotfilesImpl;
+
+    # Safe reader for TOML files with graceful fallback
+    readDotfilesAsTOML = subpath: let
       target = "${dotfiles}/${subpath}";
+      content = readDotfilesImpl subpath;
     in
       if builtins.pathExists target
-      then builtins.readFile target
-      else "# TODO: Clone dotfiles to ${dotfiles}\n";
+      then builtins.fromTOML content
+      else {}; # Return empty config if file doesn't exist
+
+    # Safe reader for JSON files with graceful fallback
+    readDotfilesAsJSON = subpath: let
+      target = "${dotfiles}/${subpath}";
+      content = readDotfilesImpl subpath;
+    in
+      if builtins.pathExists target
+      then builtins.fromJSON content
+      else {}; # Return empty config if file doesn't exist
   };
 
   imports = [
@@ -61,20 +92,21 @@
     '';
 
     activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-      # onedrive
-      if [ -e "/home/zepi/.onedrive" ]; then
-        ln -sf "/home/zepi/.onedrive/Documents" "/home/zepi"
-        ln -sf "/home/zepi/.onedrive/Downloads" "/home/zepi"
-        ln -sf "/home/zepi/.onedrive/Images" "/home/zepi"
-        ln -sf "/home/zepi/.onedrive/Videos" "/home/zepi"
-        ln -sf "/home/zepi/.onedrive/Musik" "/home/zepi"
-      fi
-
-      # wallpapers
-      # rm -rf /home/zepi/Images/Wallpaper/nixos/
-      # mkdir -p /home/zepi/Images/Wallpaper/nixos/
-      # cp -r /home/zepi/.nixos/users/zepi/.wallpapers/* /home/zepi/Images/Wallpaper/nixos/
+      # This activation script is deprecated. See home.file configuration below.
     '';
+
+    # Declarative symlink management for OneDrive directories
+    # Using Home Manager's file system for better reproducibility
+    file."Documents".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Documents")
+      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Documents");
+    file."Downloads".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Downloads")
+      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Downloads");
+    file."Images".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Images")
+      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Images");
+    file."Videos".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Videos")
+      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Videos");
+    file."Musik".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Musik")
+      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Musik");
 
     sessionVariables = {
       BROWSER = "zen";

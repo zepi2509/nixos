@@ -1,12 +1,14 @@
 {pkgs, ...}: {
+  # Shell configuration - bash, zsh, and utilities
+
   environment = {
     systemPackages = with pkgs; [
-      starship
-      blesh
-      zoxide
-      fastfetch
-      eza
-      atuin
+      starship  # Prompt - disabled below; using dotfiles config instead
+      blesh     # Bash Line Editor - line editing enhancements
+      zoxide    # Smart directory jumper (cd replacement)
+      fastfetch # System info display (faster than neofetch)
+      eza       # ls replacement with colors and icons
+      atuin     # Shell history search and sync
     ];
 
     etc = {
@@ -30,6 +32,8 @@
 
   programs = {
     starship = {
+      # Disabled: Using starship config from dotfiles instead
+      # To enable here, set to true and customize settings
       enable = false;
       settings = {
         add_newline = false;
