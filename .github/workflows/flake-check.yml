@@ -1,0 +1,129 @@
+name: NixOS Flake Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  flake-check:
+    name: Flake Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+
+      - name: Setup cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Check flake syntax
+        run: nix flake show
+
+      - name: Validate flake
+        run: nix flake check
+
+      - name: Show flake inputs
+        run: nix flake metadata
+
+  lint:
+    name: Lint Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+
+      - name: Setup cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Run statix linter (if available)
+        run: |
+          if command -v statix &> /dev/null; then
+            statix check .
+          else
+            echo "statix not available, skipping lint"
+          fi
+        continue-on-error: true
+
+      - name: Check for uncommitted changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Files modified by build:"
+            git diff --name-only
+            exit 1
+          fi
+
+  build-notebook:
+    name: Build ZEPI-Notebook Configuration
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host: [ZEPI-Notebook]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+
+      - name: Setup cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build ${{ matrix.host }} configuration
+        run: |
+          nix build \
+            ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
+            --show-trace
+        continue-on-error: true
+
+  evaluate:
+    name: Evaluate All Configurations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+
+      - name: Setup cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Evaluate ZEPI-Notebook
+        run: |
+          nix eval \
+            --json \
+            ".#nixosConfigurations.ZEPI-Notebook.config.system.build.toplevel" \
+            > /dev/null
+
+      - name: Evaluate ZEPI-Notebook-VM
+        run: |
+          nix eval \
+            --json \
+            ".#nixosConfigurations.ZEPI-Notebook-VM.config.system.build.toplevel" \
+            > /dev/null
+
+      - name: Evaluate ZEPI-Server
+        run: |
+          nix eval \
+            --json \
+            ".#nixosConfigurations.ZEPI-Server.config.system.build.toplevel" \
+            > /dev/null

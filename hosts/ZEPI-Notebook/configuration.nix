@@ -39,7 +39,7 @@
 
     consoleLogLevel = 0;
     initrd.verbose = false;
-    initrd.systemd.enable = false;
+    initrd.systemd.enable = true;
     kernelParams = [
       "quiet"
       "rd.systemd.show_status=false"

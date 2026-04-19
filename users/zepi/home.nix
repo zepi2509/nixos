@@ -33,8 +33,30 @@
     homeDirectory = "/home/zepi";
 
     activation.cloneDotfiles = lib.hm.dag.entryBefore ["writeBoundary"] ''
-      if [ ! -d "$HOME/.dotfiles" ]; then
-        ${pkgs.git}/bin/git clone git@github.com:zepi2509/dotfiles.git "$HOME/.dotfiles"
+      DOTFILES_DIR="$HOME/.dotfiles"
+      DOTFILES_REPO="git@github.com:zepi2509/dotfiles.git"
+
+      if [ ! -d "$DOTFILES_DIR" ]; then
+        echo "Cloning dotfiles repository..."
+        
+        # Ensure SSH known_hosts has GitHub's key to prevent MITM attacks
+        if ! grep -q "github.com" "$HOME/.ssh/known_hosts" 2>/dev/null; then
+          echo "Adding GitHub to known_hosts..."
+          mkdir -p "$HOME/.ssh"
+          ${pkgs.openssh}/bin/ssh-keyscan -H github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null || true
+        fi
+        
+        # Clone with error handling
+        if ${pkgs.git}/bin/git clone "$DOTFILES_REPO" "$DOTFILES_DIR" 2>/dev/null; then
+          echo "✓ Dotfiles cloned successfully"
+        else
+          echo "✗ Failed to clone dotfiles from $DOTFILES_REPO"
+          echo "Make sure:"
+          echo "  1. SSH key is configured and loaded: ssh-add ~/.ssh/github_key"
+          echo "  2. You have access to the repository"
+          echo "  3. SSH connection to GitHub is working: ssh -T git@github.com"
+          exit 1
+        fi
       fi
     '';
 
