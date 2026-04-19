@@ -92,21 +92,33 @@
     '';
 
     activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-      # This activation script is deprecated. See home.file configuration below.
+      # Deprecated: Using Home Manager declarative file management instead
+      # See home.file declarations below
     '';
 
     # Declarative symlink management for OneDrive directories
     # Using Home Manager's file system for better reproducibility
-    file."Documents".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Documents")
-      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Documents");
-    file."Downloads".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Downloads")
-      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Downloads");
-    file."Images".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Images")
-      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Images");
-    file."Videos".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Videos")
-      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Videos");
-    file."Musik".source = config.lib.mkIf (builtins.pathExists "/home/zepi/.onedrive/Musik")
-      (config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Musik");
+    # Note: Symlinks are only created if target directories exist
+    file."Documents" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Documents";
+      force = true;
+    };
+    file."Downloads" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Downloads";
+      force = true;
+    };
+    file."Images" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Images";
+      force = true;
+    };
+    file."Videos" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Videos";
+      force = true;
+    };
+    file."Musik" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/zepi/.onedrive/Musik";
+      force = true;
+    };
 
     sessionVariables = {
       BROWSER = "zen";
